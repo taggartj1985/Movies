@@ -15,6 +15,29 @@ const createRouter = function (collection) {
     })
   });
 
+  router.get('/:id', function(req, res){
+    const id = req.params.id;
+    collection.findOne({_id: ObjectID(id)})
+    .then(doc => res.json(doc))
+    .catch((error) => {
+      console.error(error);
+      res.status(500);
+      res.json({error: error})
+    })
+  });
+
+  router.delete('/:id', function(req, res){
+    const id = req.params.id;
+    collection.deleteOne({_id: ObjectID(id)})
+    .then(doc => res.json(doc))
+    .catch((error) => {
+      console.error(error);
+      res.status(500);
+      res.json({error: error})
+    })
+  });
+
+
   return router;
 
 };
