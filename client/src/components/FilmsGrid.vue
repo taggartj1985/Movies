@@ -6,6 +6,9 @@
 
 <script>
 import FilmGridItem from './FilmGridItem'
+import MoviesService from '@/services/MoviesService.js'
+import { eventBus } from '@/main.js'
+
 export default {
   data(){
     return {
@@ -13,6 +16,14 @@ export default {
     };
   },
   mounted(){
+    MoviesService.getMovies()
+    .then(films => this.films = films)
+
+    eventBus.$on('film-deleted', (id) => {
+    const index = this.films.findIndex(film => film._id === id);
+    this.films.splice(index, 1);
+  })
+
 
   },
   components: {
