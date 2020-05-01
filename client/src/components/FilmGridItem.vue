@@ -12,8 +12,9 @@
 </template>
 
 <script>
-import MoviesService from '@/services/MoviesService.js'
+import MoviesService from '@/services/MoviesService.js';
 import {eventBus} from '@/main.js';
+
 
 export default {
   name: 'film-card',
@@ -27,9 +28,11 @@ export default {
     },
     selectFilm() {
       //TODO: Code film Selected Method
+      eventBus.$emit('selected-film', this.film);
+      },
     }
   }
-}
+
 </script>
 
 <style lang="css" scoped>
