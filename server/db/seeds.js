@@ -25,14 +25,3 @@ db.movies.insertMany([
   crew: [{director:"Jee-woon Kim", writer:"Jee-woon Kim"}]},
 
 ])
-
-
-//
-// Movies will be stored with the following data:
-//
-// Title
-// Genre
-// Rating (PG, 12A, 15, 18, etc)
-// Release Date (Stored as a string for now)
-// Runtime
-// Crew (An object storing director and producer details)
